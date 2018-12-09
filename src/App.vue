@@ -1,26 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <main class="content">
+      <Header
+        company_name="Щибриков Евгений Евгеньевич"
+        company_type="Индивидуальный предприниматель"
+      />
+      <ShadowSplitter />
+      <CardWidget />
+    </main>
   </div>
 </template>
-
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import CardWidget from "./components/CardWidget";
+import Header from "./components/Header";
+import ShadowSplitter from "./components/ShadowSplitter";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    Header,
+    ShadowSplitter,
+    CardWidget
   }
 };
 </script>
 <style lang="stylus">
 #app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+  display: flex
+  justify-content: center;
+  font-family: Roboto, Arial, "Helvetica Neue", sans-serif
+
+.content
+  width: 100%
+  max-width 900px;
 </style>
