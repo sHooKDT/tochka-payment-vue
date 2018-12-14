@@ -19,34 +19,39 @@ export default {
   props: ["company_type", "company_name"]
 };
 </script>
-<style scoped lang="stylus">
-$link-active-color = #0000ff
-$link-hover-color = #000077
+<style scoped lang="less">
+@link-active-color: #0000ff;
+@link-hover-color: #000077;
 
-img
-    width: 300px
+img {
+  width: 300px;
+}
+.header-wrapper {
+  display: flex;
+}
+.headers {
+  flex: 1;
+}
+.link,
+.link:visited,
+.link:active {
+  color: @link-active-color;
+  margin: 10px 5px;
+  text-decoration: none;
 
-.header-wrapper
-    display: flex
+  &:hover {
+    color: @link-hover-color;
+  }
+}
+.link-like-button {
+  cursor: pointer;
+  color: @link-active-color;
+  background: none;
+  outline: none;
+  border: none;
 
-.headers
-    flex: 1
-
-.link, .link:visited, .link:active
-  color: $link-active-color
-  margin: 10px 5px
-  text-decoration: none
-
-  &:hover
-    color: $link-hover-color
-
-.link-like-button
-  cursor: pointer
-  color: $link-active-color
-  background: none
-  outline none
-  border none
-
-  &:hover
-    color: $link-hover-color
+  &:hover {
+    color: @link-hover-color;
+  }
+}
 </style>

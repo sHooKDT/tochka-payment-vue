@@ -52,8 +52,9 @@ export default {
   name: "ShadowSplitter"
 };
 </script>
-<style scoped lang="stylus">
-.splitter
-  width: 100%
-  margin: 15px 0
+<style scoped lang="less">
+.splitter {
+  width: 100%;
+  margin: 15px 0;
+}
 </style>

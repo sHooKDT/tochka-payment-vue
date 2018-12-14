@@ -6,13 +6,13 @@
         company_type="Индивидуальный предприниматель"
       />
       <ShadowSplitter />
-      <CardWidget />
+      <PayFromAnotherBank />
     </main>
   </div>
 </template>
 <script>
-import CardWidget from "./components/CardWidget";
 import Header from "./components/Header";
+import PayFromAnotherBank from "./components/PayFromAnotherBank";
 import ShadowSplitter from "./components/ShadowSplitter";
 
 export default {
@@ -20,17 +20,18 @@ export default {
   components: {
     Header,
     ShadowSplitter,
-    CardWidget
+    PayFromAnotherBank
   }
 };
 </script>
-<style lang="stylus">
-#app
-  display: flex
+<style lang="less">
+#app {
+  display: flex;
   justify-content: center;
-  font-family: Roboto, Arial, "Helvetica Neue", sans-serif
-
-.content
-  width: 100%
-  max-width 900px;
+  font-family: Roboto, Arial, "Helvetica Neue", sans-serif;
+}
+.content {
+  width: 100%;
+  max-width: 900px;
+}
 </style>
