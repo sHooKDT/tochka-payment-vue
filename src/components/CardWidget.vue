@@ -7,11 +7,21 @@
       <svg class="icon"><use xlink:href="#visa"></use></svg>
     </div>
     <div class="card-number">
-      <TextField class="card-number__input" placeholder="4111 1000 0000 0000" />
+      <TextField
+        class="card-number__input"
+        placeholder="4111 1000 0000 0000"
+        v-model="cardNumber"
+        v-on:change="validate"
+      />
+      {{ this.errors.cardNumber }}
     </div>
     <div class="card-other">
-      <TextField class="card-other__input" placeholder="05/22" />
-      <TextField class="card-other__input" placeholder="036" />
+      <TextField
+        class="card-other__input"
+        placeholder="05/22"
+        v-model="expiration"
+      />
+      <TextField class="card-other__input" placeholder="036" v-model="holder" />
     </div>
   </div>
 </template>
@@ -21,13 +31,30 @@ import TextField from "./TextField";
 
 export default {
   name: "CardWidget",
-  components: { CardsSVGSprite, TextField }
+  components: { CardsSVGSprite, TextField },
+  data: function() {
+    return {
+      cardNumber: "",
+      expiration: new Date(),
+      holder: "",
+      errors: {}
+    };
+  },
+  methods: {
+    validate() {
+      this.errors = {};
+
+      if (!/\d{4} ?\d{4} ?\d{4} ?\d{4}/.test(this.cardNumber)) {
+        this.errors.cardNumber = "Card number doesn't match format";
+      }
+    }
+  }
 };
 </script>
 <style scoped lang="less">
 .wrapper {
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   border-radius: 10px;
   background: #fcfcfc;
   box-shadow: 5px 0 30px 0 rgba(0, 0, 0, 0.3);
@@ -53,7 +80,7 @@ export default {
 }
 
 .card-other {
-  margin: 50px 30px 0;
+  margin: 30px 30px 0;
 
   &__input {
     width: 25%;

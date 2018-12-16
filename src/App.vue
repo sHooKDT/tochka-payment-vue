@@ -7,12 +7,15 @@
       />
       <ShadowSplitter />
       <PayFromAnotherBank />
+      <ShadowSplitter />
+      <Products />
     </main>
   </div>
 </template>
 <script>
 import Header from "./components/Header";
 import PayFromAnotherBank from "./components/PayFromAnotherBank";
+import Products from "./components/Products";
 import ShadowSplitter from "./components/ShadowSplitter";
 
 export default {
@@ -20,7 +23,8 @@ export default {
   components: {
     Header,
     ShadowSplitter,
-    PayFromAnotherBank
+    PayFromAnotherBank,
+    Products
   }
 };
 </script>

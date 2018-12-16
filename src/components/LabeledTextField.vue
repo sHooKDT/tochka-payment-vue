@@ -1,6 +1,6 @@
 <template>
-  <label :for="name + 'input'">
-    Комментарий
+  <label :for="name + 'input'" class="label-wrapper">
+    <span class="label-text"> {{ label }} </span>
     <TextField
       :name="name"
       :id="name + 'input'"
@@ -19,5 +19,16 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.label-wrapper {
+  display: block;
+}
 
+.label-text {
+  display: inline-block;
+  width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 5px;
+  font-weight: bold;
+}
 </style>

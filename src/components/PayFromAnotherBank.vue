@@ -1,44 +1,56 @@
 <template>
   <div class="pay-from-another-bank-form">
     <CardWidget />
-    <form action="">
-      <label for="sum-input">
-        Сумма
-        <TextField
-          name="sum"
-          id="sum-input"
-          placeholder="От 1 000 до 75 000 р"
-        />
-      </label>
-      <label for="comment-input">
-        Комментарий
-        <TextField
-          name="comment"
-          id="comment-input"
-          placeholder="До 150 символов"
-        />
-      </label>
-      <label for="email-input">
-        Сумма
-        <TextField
-          name="email"
-          id="email-input"
-          placeholder="Для квитанций об оплате"
-        />
-      </label>
+    <form action="" class="form">
+      <LabeledTextField
+        label="Сумма"
+        name="sum"
+        placeholder="От 1 000 до 75 000 р"
+        class="form-element"
+      />
+      <LabeledTextField
+        label="Комментарий"
+        name="comment"
+        placeholder="До 150 символов"
+        class="form-element"
+      />
+      <LabeledTextField
+        label="Ваша эл.почта"
+        name="email"
+        placeholder="Для квитанций об оплате"
+        class="form-element"
+      />
+      <AquaButton>Заплатить</AquaButton>
     </form>
   </div>
 </template>
 <script>
+import AquaButton from "./AquaButton";
 import CardWidget from "./CardWidget";
-import TextField from "./TextField";
+import LabeledTextField from "./LabeledTextField";
 
 export default {
   name: "PayFromAnotherBank",
   components: {
     CardWidget,
-    TextField
+    LabeledTextField,
+    AquaButton
   }
 };
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.pay-from-another-bank-form {
+  display: flex;
+}
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 30px;
+}
+.form-element {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+</style>
