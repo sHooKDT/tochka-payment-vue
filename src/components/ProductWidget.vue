@@ -12,7 +12,11 @@ export default {
   props: ["product"],
   methods: {
     formatPrice(price) {
-      return currency(price, { formatWithSymbol: true, symbol: "₽", pattern: '# !' }).format();
+      return currency(price, {
+        formatWithSymbol: true,
+        symbol: "₽",
+        pattern: "# !"
+      }).format();
     }
   }
 };

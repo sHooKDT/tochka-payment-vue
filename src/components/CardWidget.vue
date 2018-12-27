@@ -10,18 +10,52 @@
       <TextField
         class="card-number__input"
         placeholder="4111 1000 0000 0000"
-        v-model="cardNumber"
-        v-on:change="validate"
+        ref="cardNumber"
+        :value="value.cardNumber"
+        @input="updateValue('cardNumber', $event)"
+        :error="errors.cardNumber"
+        :mask="[
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          ' ',
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          ' ',
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/,
+          ' ',
+          /\d/,
+          /\d/,
+          /\d/,
+          /\d/
+        ]"
       />
-      {{ this.errors.cardNumber }}
     </div>
     <div class="card-other">
       <TextField
         class="card-other__input"
         placeholder="05/22"
-        v-model="expiration"
+        ref="expiration"
+        :value="value.expiration"
+        @input="updateValue('expiration', $event)"
+        :error="errors.expiration"
+        :mask="[/\d/, /\d/, '/', /\d/, /\d/]"
       />
-      <TextField class="card-other__input" placeholder="036" v-model="holder" />
+      <TextField
+        class="card-other__input"
+        placeholder="036"
+        ref="cvc"
+        :value="value.cvc"
+        @input="updateValue('cvc', $event)"
+        :error="errors.cvc"
+        :mask="[/\d/, /\d/, /\d/]"
+      />
     </div>
   </div>
 </template>
@@ -32,21 +66,13 @@ import TextField from "./TextField";
 export default {
   name: "CardWidget",
   components: { CardsSVGSprite, TextField },
-  data: function() {
-    return {
-      cardNumber: "",
-      expiration: new Date(),
-      holder: "",
-      errors: {}
-    };
-  },
+  props: ["value", "errors"],
   methods: {
-    validate() {
-      this.errors = {};
-
-      if (!/\d{4} ?\d{4} ?\d{4} ?\d{4}/.test(this.cardNumber)) {
-        this.errors.cardNumber = "Card number doesn't match format";
-      }
+    updateValue(field, value) {
+      this.$emit("input", {
+        ...this.value,
+        [field]: value
+      });
     }
   }
 };
@@ -54,6 +80,7 @@ export default {
 <style scoped lang="less">
 .wrapper {
   width: 400px;
+  max-width: 100%;
   height: 250px;
   border-radius: 10px;
   background: #fcfcfc;
@@ -85,6 +112,10 @@ export default {
   &__input {
     width: 25%;
     margin-right: 70px;
+
+    @media (max-width: 500px) {
+      margin-right: 30px;
+    }
   }
 }
 </style>

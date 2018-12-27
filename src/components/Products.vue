@@ -62,6 +62,6 @@ export default {
   flex-flow: row wrap;
 }
 .product {
-  flex: 1;
+  flex: 1 0 250px;
 }
 </style>

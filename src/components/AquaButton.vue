@@ -1,5 +1,5 @@
 <template>
-  <button class="aqua-button">
+  <button class="aqua-button" @click="$emit('click', $event)">
     <div class="aqua-button-bg" />
     <slot />
   </button>
@@ -19,7 +19,12 @@ export default {};
   font-weight: bold;
   cursor: pointer;
 
-  &:hover {
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:hover,
+  &:focus {
     color: #6e6e6e;
 
     .aqua-button-bg {
